@@ -16,6 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from Profile.views import update_profile
+from notes.views import note_create_view
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('profile/', update_profile),
+    path('note/', note_create_view),
 ]
