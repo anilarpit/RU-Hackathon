@@ -10,8 +10,8 @@ class Note(models.Model):
     )
     topic = models.CharField(max_length=120)
     comment = models.TextField(blank=True)
-    image = models.FileField()
+    image = models.FileField(upload_to='img/')
     importance = models.CharField(max_length=20, choices=importance_choices, default='less important')
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, null=True, on_delete=models.CASCADE)
 
 

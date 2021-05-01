@@ -1,0 +1,21 @@
+{% extends 'home.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h3>Hello {{ user.username }}</h3>
+<ul>
+    {% for item in notes %}
+    <li>
+        <h1>{{ item.topic }}</h1>
+        <p>( {{ item.importance }} )</p>
+        <p>{{ item.comment }}</p>
+        <img src="{{ item.image.url }}">
+
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Register to view your notes : </p><a href="{% url 'register'%}">here!</a>
+{% endif %}
+
+{% endblock %}

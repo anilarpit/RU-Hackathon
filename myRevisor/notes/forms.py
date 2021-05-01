@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class NoteForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ['topic', 'comment', 'image', 'importance', 'profile']
+        fields = ['topic', 'comment', 'image', 'importance']
 
 '''
 class UploadFileForm(forms.Form):
