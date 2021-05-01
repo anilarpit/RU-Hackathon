@@ -1,19 +1,27 @@
 {% extends 'home.html' %}
 
+{% block head %}
+{% include 'navbar.html' %}
+{% endblock %}
+
 {% block content %}
 {% if user.is_authenticated %}
 <h3>Hello {{ user.username }}</h3>
+<div style="border: 1em;">
 <ul>
     {% for item in notes %}
+    <div style="padding: 2em; text-align: center; width: 100%;">
     <li>
-        <h1>{{ item.topic }}</h1>
+        <h1 style="margin-left: 0em;">{{ item.topic }}</h1>
         <p>( {{ item.importance }} )</p>
         <p>{{ item.comment }}</p>
-        <img src="{{ item.image.url }}">
+        <img src="{{ item.image.url }}" width="500" height="500">
 
     </li>
+    </div>
     {% endfor %}
 </ul>
+</div>
 {% else %}
 <p>Register to view your notes : </p><a href="{% url 'register'%}">here!</a>
 {% endif %}

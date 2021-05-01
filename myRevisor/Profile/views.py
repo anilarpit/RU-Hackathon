@@ -6,27 +6,9 @@ from .forms import UserForm, ProfileForm
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 
-def login_in(request):
-    print('ok')
-    if request.user.is_authenticated:
-        return render(request, 'profile/already_login.html', {'user':request.user})
-    
-    else:
-        print('ye')
-        form = AuthenticationForm(request.POST or None)
-        if form.is_valid():
-            print('123434')
-            user = form.get_user()
-            print(user.username)
-            login(request, user)
-            return redirect('notes')
-        else:
-            print('nani')
-        context = {
-            'my_form' : form,
-        }
 
-        return render(request, 'profiles/login_in.html', context)
+def home_view(request):
+    return render(request, 'home.html', {})
 
 
 def login_out(request):
@@ -40,9 +22,10 @@ def register(request):
 
     if user_form.is_valid() and profile_form.is_valid():
         user = user_form.save()
-        profile = profile_form.save()
+        profile = user.profile
         profile.user = user
         profile.save()
+        login(request, user)
         return redirect('notes')
     
     context = {

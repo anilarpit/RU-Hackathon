@@ -1,5 +1,11 @@
 {% extends 'home.html' %}
-
+{% block head %}
+{% include 'navbar.html' %}
+{% endblock %}
 {% block content %}
-<p>Register to view or create notes : </p><a href="{% url 'register'%}">here!</a>
+
+<div style="margin-top: 1em; margin-bottom: 2 em;">
+<p>Nani</p><br>
+<h1 style="margin-bottom: 3em;">Sign in or Register to view  or create notes</h1>
+</div>
 {% endblock %}
