@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+<p>You are already logged in {{ user.username }}</p>
+{% endblock %}
